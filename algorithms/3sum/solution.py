@@ -1,17 +1,37 @@
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        starts=0
-        ends=0
-        curr=0
-        index={}
-        for i in range(len(s)):
-            if s[i] in index and index[s[i]] >= starts :
-                starts=index[s[i]]+1
-            ends+=1
-            index[s[i]]=i
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        nums.sort()
+        res = []
 
-            r= ends - starts
-            if curr <r:
-                curr=r
+        n = len(nums)
 
-        return curr
+        for i in range(n - 2):
+
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
+            j = i + 1
+            k = n - 1
+
+            while j < k:
+                total = nums[i] + nums[j] + nums[k]
+
+                if total == 0:
+                    res.append([nums[i], nums[j], nums[k]])
+
+                    while j < k and nums[j] == nums[j + 1]:
+                        j += 1
+
+                    while j < k and nums[k] == nums[k - 1]:
+                        k -= 1
+
+                    j += 1
+                    k -= 1
+
+                elif total < 0:
+                    j += 1
+
+                else:
+                    k -= 1
+
+        return res
