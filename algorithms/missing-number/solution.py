@@ -1,14 +1,11 @@
 class Solution:
-    def rotate(self, nums: list[int], k: int) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-
-        n=len(nums)
-        k=k%n
-        l1=nums[:n-k]
-        l2=nums[n-k:]
-        nums[:k]=l2
-        nums[k:]=l1
-
-        
+    def missingNumber(self, nums: List[int]) -> int:
+        missing={}
+        num="x"
+        for i in nums:
+            missing[i]=1
+        for i in range(len(nums)+1):
+            if i not in missing:
+                num=i
+                break
+        return num
