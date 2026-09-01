@@ -1,13 +1,16 @@
 class Solution {
-    public int removeElement(int[] nums, int val) {
-        int k=0;
-        for (int i=0;i<nums.length;i++){
-            if (nums[i] != val){
-                nums[k]=nums[i];
-                k++;
+    public int minSubArrayLen(int target, int[] nums) {
+        int left=0;
+        int curr_sum=0;
+        int ans=Integer.MAX_VALUE;
+        for (int right=0; right<nums.length;right++){
+            curr_sum+=nums[right];
+            while(curr_sum >= target){
+                ans=Math.min(ans,right-left+1);
+                curr_sum-=nums[left];
+                left++;
             }
         }
-        return k;
-        
+        return ans==Integer.MAX_VALUE ? 0:ans;
     }
 }
