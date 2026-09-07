@@ -1,11 +1,10 @@
 class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
-        missing={}
-        num="x"
-        for i in nums:
-            missing[i]=1
-        for i in range(len(nums)+1):
-            if i not in missing:
-                num=i
-                break
-        return num
+    def strStr(self, haystack: str, needle: str) -> int:
+        n=len(needle)
+        i=0
+        while i+n <= len(haystack):
+            if needle == haystack[i:i+n]:
+                return i
+            i+=1
+        return -1
+        
