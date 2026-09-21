@@ -1,21 +1,17 @@
-class Solution:
-    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
-        results=[]
-        def backtrack(index,current,remaining):
-            if remaining==0:
-                results.append(current.copy())
-                return
-            if remaining<0:
-                return
-            if index == len(candidates):
-                return
-            current.append(candidates[index])
-            backtrack(index,current,remaining-candidates[index])
-            current.pop()
-            backtrack(index+1,current,remaining)
-        backtrack(0,[],target)
-
-        return results
-
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        mydict={}
+        for i in range(len(nums)):
+            need=target-nums[i]
+            if mydict.get(need) != None:
+                return (i,mydict.get(need))
+            else:
+                mydict[nums[i]]=i
+        return []
         
         
