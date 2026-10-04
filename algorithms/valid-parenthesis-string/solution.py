@@ -1,13 +1,23 @@
-from collections import Counter
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        freq1=Counter(s)
-        freq2=Counter(t)
-        freq=freq1 if len(freq1)>len(freq2) else freq2
-        freqf=freq1 if len(freq1)<=len(freq2) else freq2
-        for i,j in freq.items():
-            if freqf.get(i,-1)!=j:
+    def checkValidString(self, s: str) -> bool:
+        low=0
+        high=0
+        for ch in s:
+            if ch=="(":
+                low+=1
+                high+=1
+            elif ch==")":
+                low-=1
+                high-=1
+            else:
+                low-=1
+                high+=1
+            if high <0:
                 return False
-        return True
-                
-        
+            low=max(low,0)
+
+        return low==0
+
+
+
+
