@@ -1,18 +1,15 @@
 class Solution:
-    def scoreOfParentheses(self, s: str) -> int:
-        stack=[0]
+    def minAddToMakeValid(self, s: str) -> int:
+        open = 0
+        add = 0
+
         for i in s:
-            if i=="(":
-                stack.append(0)
+            if i == "(":
+                open += 1
             else:
-                inner=stack.pop()
-                if inner==0:
-                    score=1
+                if open > 0:
+                    open -= 1
                 else:
-                    score=2*inner
-                
-                stack[-1]+=score
-        return stack[0]
+                    add += 1
 
-
-        
+        return add + open
