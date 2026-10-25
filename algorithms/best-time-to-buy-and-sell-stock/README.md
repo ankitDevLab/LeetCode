@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 
-**Language:** Python
+**Language:** Python3
 
 ## Problem
 
@@ -10,7 +10,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 ## Solution
 
-Automatically synchronized from LeetCode on September 22, 2026.
+Automatically synchronized from LeetCode on October 25, 2026.
 
 ## Complexity
 
