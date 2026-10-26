@@ -1,18 +1,14 @@
+
 class Solution:
-    def maxArea(self, height: list[int]) -> int:
-        res=0
-        left=0
-        right=len(height)-1
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        prefix_sum = 0
+        freq = {0: 1}
 
-        while left < right:
-            width=right - left
-            h=min(height[left],height[right])
+        for num in nums:
+            prefix_sum += num
 
-            area = width *h
-            res = max (res, area)
+            count += freq.get(prefix_sum - k, 0)
+            freq[prefix_sum] = freq.get(prefix_sum, 0) + 1
 
-            if height[left] < height[right]:
-                left+=1
-            else:
-                right -=1
-        return res
+        return count
