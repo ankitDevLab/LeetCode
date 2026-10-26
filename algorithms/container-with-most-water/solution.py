@@ -1,14 +1,18 @@
 class Solution:
-    def maxSubArray(self, nums: list[int]) -> int:
-        res=nums[0]
-        curr = nums[0]
-        for i in range(1,len(nums)):
-            curr = max(nums[i],curr+nums[i])
-            res = max(curr,res)
+    def maxArea(self, height: list[int]) -> int:
+        res=0
+        left=0
+        right=len(height)-1
+
+        while left < right:
+            width=right - left
+            h=min(height[left],height[right])
+
+            area = width *h
+            res = max (res, area)
+
+            if height[left] < height[right]:
+                left+=1
+            else:
+                right -=1
         return res
-
-
-
-
-
-
